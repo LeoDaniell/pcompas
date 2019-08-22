@@ -30,7 +30,7 @@
         $contrasena = $_POST['contrasena'];
 
         $db = new Database();
-        $query = $db->connect()->prepare('SELECT *FROM usuario WHERE username = :username AND contrasena = :contrasena');
+        $query = $db->connect()->prepare('SELECT  *FROM usuario WHERE username = :username AND contrasena = :contrasena');
         $query->execute(['username' => $username, 'contrasena' => $contrasena]);
 
         $row = $query->fetch(PDO::FETCH_NUM);

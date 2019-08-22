@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html>
 
@@ -196,23 +199,71 @@
          </div>
          <div class="card-body" >
    
-   
+        <form action="" method="post"> 
+
+
+<?php
+
+         if (isset($_POST['editar'])) {
+
+            require "conectbase.php";
+
+
+            $passActual = $mysqli->real_escape_string($_POST['passActual']);
+            $pass1 = $mysqli->real_escape_string($_POST['pass1']);
+            $pass2 = $mysqli->real_escape_string($_POST['pass2']);
+
+
+            $sqlA = $mysqli->query("SELECT contrasena FROM usuario WHERE idTipoUsuario = '".$_SESSION['idTipoUsuario']. "'");
+            $row = $sqlA->fetch_array();
+
+            if ($row['contrasena'] == $passActual){
+
+               if($pass1 == $pass2){
+                   $update = $mysqli->query("UPDATE usuario SET contrasena = '$pass1' Where idTipoUsuario = '".$_SESSION['idTipoUsuario']. "'");
+                   if ($update) {echo "Se ha actualizado tu contraseña";}
+               }
+               else{
+                   echo"Las dos contraseñas no coinciden";
+               }
+            }
+            else{
+                echo "Tu contraseña actual no coincide";
+            }
+
+
+         }     
+
+
+
+?>
+
    
          <div class="form-group" style="margin-top: 100px" style="width: 50px">
-             <label>Contraseña: &nbsp; </label>
+             <label>Contraseña actual: &nbsp; </label>
              <br>
-             <input type="password" class="form-control" id="ingresarInputPassword1"
+             <input type="password" class="form-control" name="contrasena"
                placeholder="Ingresar contraseña actual">
    
            </div>
            <div class="form-group" style="margin-top: 15px">
              <label>Nueva contraseña: &nbsp; </label>
              <br>
-             <input type="password" class="form-control" id="ingresarInputPassword2"
+             <input type="password" class="form-control" name="pass1"
                placeholder="Ingresar nueva contraseña">
            </div>
-           <a href="#" class="btn btn-primary">Modificar contraseña</a>
+           <?php if (isset($existe)) {echo $existe;} ?>
+
+           <div class="form-group" style="margin-top: 15px">
+             <label>Escribe otra vez tu contraseña: &nbsp; </label>
+             <br>
+             <input type="password" class="form-control" name="pass2"
+               placeholder="Ingresar nueva contraseña">
+           </div>
+
+           <input type="submit" class="btn btn-primary" value="Cambiar contraseña" name="editar">
             
+            </form>
           
          </div>
        </div>
