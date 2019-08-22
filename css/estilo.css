@@ -1,0 +1,256 @@
+.navbar-brand
+{
+ margin-top:-50px 
+}
+.mipie{
+
+    background: #B2BABB;
+    border-radius: 10px;
+    
+    height:auto;
+}
+
+
+.cont{
+
+    background: #E2E8E4;
+    border-radius: 10px;
+    
+}
+.caja{
+
+    background:#B2BABB  ;
+
+    border-radius: 10px;
+
+    height: auto;
+
+
+}
+.btn-primary{
+    
+    
+    color: white;
+    background: #45B39D  ;
+    
+
+    
+}
+.btn-primary:hover{
+
+    background-color: black;
+}
+
+.tit{
+
+    background: #E2E8E4;
+    text-align: center;
+
+}
+
+/*Comienza Pagina Inicio*/
+
+.bus{
+    text-align: left
+}
+
+.card{
+
+    width: 500px; height: 600px;
+}
+.botons
+{
+    text-align: center;
+    width:auto;
+}
+
+.btn-outline-success
+{
+    
+    
+    color: black;
+    background: #336B87;
+
+    
+}
+.btn-outline-success:hover{
+
+    background-color: black;
+}
+
+/*productoindividual*/
+
+.produ { 
+    
+    text-align: center;
+    
+}
+
+.conta{
+    width:50px;
+    left: 50px;
+     
+}
+
+.imco{
+
+    text-align: left
+}
+
+.ubi{
+    text-align: center;
+  
+}
+.ubim
+{
+    margin: 50px;
+}
+
+
+/**Inicia CSS de agregar nuevo producto */
+.uno{
+    width: 400px;
+    height: 400px;
+    margin:auto;
+}
+.dos{
+    width: 50px;
+    height: 50px;
+    margin:auto;
+}
+
+
+/*inicio de sesion*/
+
+.login{
+    text-align: center;
+    background: gray;
+    margin-left: 300px;
+    margin-right: 300px;
+    border-radius: 10px;
+
+}
+
+
+
+/*recargas*/
+
+.btn{
+    text-align: center;
+    color: white;
+    background: #3498DB;
+
+}
+.btn:hover{
+
+    background-color: black;
+}
+
+.cuadro{
+    margin: auto;
+}
+
+.au{
+    width: auto;
+    height:auto; 
+    
+}
+
+/*estilos pie de pagina*/
+
+.footer
+{
+    height: 40px;
+    
+    border-spacing: 20px;
+    text-align: center;
+    padding-top: 20px; 
+    
+}
+.card
+{
+    text-align: center;
+    border-radius: 20px;
+}
+button
+{
+    border-block: none;
+    background: none;
+}
+
+.cards
+{
+    margin: auto;
+    width: auto;
+    height: auto;
+ }
+ p{
+
+text-align: justify;
+ }
+ .txt{
+     text-align: center;
+ }
+ .bb
+ {
+color: red;
+
+ }
+
+
+ /*inventario*/
+
+
+
+ .compl{
+    background: #7DE878;
+}
+
+.compl1{
+    background: #F0B587;
+
+}
+
+.compl2{
+    background: #E87878;
+}
+
+.compl3{
+    background: #336B87;
+}
+
+
+
+ 
+ /*registrar*/
+
+
+.btnverde{
+
+background: #2ECC71
+}
+
+.btnrojo{
+    
+    background: #E74C3C
+
+}
+
+.custom-select{
+
+    width: auto;
+    background: #3498DB;
+    color: white;
+
+}
+
+.btncli
+
+{
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+
+ 
