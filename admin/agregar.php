@@ -200,10 +200,13 @@
                     <div class="card-body">
                         <div class="container">
                             <!--seccion Contenido-->
+                            <form method="POST" name="form-work" action="guardar.php" enctype="multipart/form-data">
                             <div class="row ">
 
                                 <!-- Columna 1-->
 
+
+                           
                                 <div class="col-md-6" style="margin-top: 15px">
                                     <h3>Agregar producto </h3>
                                     <br>
@@ -211,7 +214,7 @@
                                         <p>
                                             Nombre del producto: &nbsp;
                                             <br>
-                                            <input type="text" name="cajas">
+                                            <input type="text" name="txtNombreProducto" required>
                                         </p>
                                     </div>
 
@@ -222,7 +225,7 @@
                                         <p>
                                             Marca: &nbsp;
                                             <br>
-                                            <input type="text" name="cajas">
+                                            <input type="text" name="txtNombreMarca" required>
                                         </p>
                                     </div>
 
@@ -233,7 +236,7 @@
                                         <p>
                                             Precio: &nbsp;
                                             <br>
-                                            <input type="text" name="cajas">
+                                            <input type="text" name="txtPrecio" required>
                                         </p>
                                     </div>
                                     <div class="row">
@@ -243,7 +246,7 @@
                                             <br>
                                             Cajas: &nbsp;
                                             <br>
-                                            <input type="text" name="cajas">
+                                            <input type="text" name="txtCajas">
                                         </p>
                                     </div>
                                     <br>
@@ -251,7 +254,7 @@
                                         <p>
                                             Piezas por caja: &nbsp;
                                             <br>
-                                            <input type="text" name="cajas">
+                                            <input type="text" name="txtPzsCaja" required>
                                         </p>
                                     </div>
                                     <br>
@@ -259,7 +262,7 @@
                                         <p>
                                             Descripción: &nbsp;
                                             <br>
-                                            <input type="text" name="cajas">
+                                            <input type="text" name="txtDescripcion" required>
                                         </p>
                                     </div>
 
@@ -267,6 +270,7 @@
 
                                 </div>
 
+                                
                                 <!-- Columna 2-->
 
                                 <div class="col-md-6" style="margin-top: 15px">
@@ -275,24 +279,21 @@
                                     <div class="row">
                                         <br>
                                         <p><b class="bb">NOTA:Se recomienda subir imagenes en buena resolucion para
-                                                que no se rompan al momento de subierlas al sitio:</b> </p>
+                                                que no se rompan al momento de subirlas al sitio:</b> </p>
                                     </div>
 
 
-                                    <div class="row">
-                                        <img class="uno" src="../imagen/cartulina bristol color.jpg">
-                                    </div>
+                                    
 
                                     <div class="row">
                                         <p>
-                                            <form>
+                                            
                                                 <div class="form-group">
-                                                    <label for="exampleFormControlFile1"> <b>Selecione la imagen</b>
+                                                    <label > <b>Selecione la imagen</b>
                                                     </label>
-                                                    <input type="file" class="form-control-file"
-                                                        id="exampleFormControlFile1">
+                                                    <input type="file" name="foto" required>
                                                 </div>
-                                            </form>
+                                            
                                         </p>
                                     </div>
 
@@ -314,10 +315,10 @@
 
                                         <ul style="margin: auto">
 
-                                            <a href="#" class="btn btn-Danger btnverde">Guardar cambios</a>
-
-
-                                            <a href="#" class="btn btn-primary btnrojo">Cancelar</a>
+                                            <input type="submit" value="Guardar cambios" class="btn btn-Danger btnverde">
+                                            
+                                    </form>
+                                            <a class="btn btn-primary btnrojo" href="index.php">Cancelar</a>
 
                                         </ul>
 
