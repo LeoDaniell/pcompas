@@ -63,7 +63,54 @@
 
 ?>
 
+<?php
+/*Requerir conexion con la BD*/
+   $servidor = "localhost";
+   $nombreusuario = "root";
+   $password = "";
+   $db = "papeleria";
+   
+   $conexion = new mysqli($servidor, $nombreusuario, $password, $db);
 
+   if($conexion->connect_error){
+     die("Conexion fallida: " . $conexion->connect_error);
+   }
+
+  $message = '';
+
+  if (isset($_POST['contrasena']) && isset($_POST['correo']) && isset($_POST['nombre']) && isset($_POST['idTipoUsuario']) && isset($_POST['username'])){
+    /*Vincular parametros*/
+    $contrasena = $_POST ['contrasena'];
+    $correo = $_POST ['correo'];
+    $nombre = $_POST ['nombre'];
+    $idTipoUsuario = $_POST ['idTipoUsuario'];
+    $username = $_POST ['username'];
+    
+    /*Agregar datos a la BD*/
+    $sql = "INSERT INTO usuario (contrasena, correo, nombre, idTipoUsuario, username) VALUES ('$contrasena', '$correo', '$nombre', '$idTipoUsuario', '$username')"; 
+    
+    /*Ejecutar consulta para evitar usuarios repetidos*/
+
+    $verificar_usuario = mysqli_query($conexion, "SELECT * FROM usuario WHERE username = '$username'");
+    if (mysqli_num_rows($verificar_usuario) > 0) {
+      $verificar_usuario = "El usuario ingresado ya esta registrado";
+
+      include_once 'index.php';
+    }
+
+
+    
+
+
+  if ($conexion->query($sql) === true){
+    $message = 'Tu usuario ha sido creado exitosamente';
+} else{
+    die ("Lo sentimos ha ocurrido un error al intentar registrarlo: " . $conexion->error);
+}
+$conexion->close();
+
+}
+?>
 
 <!doctype html>
 <html lang="es">
@@ -128,14 +175,14 @@
                   </li>
 
                 </ul>
-                <!--Boton de notificaci�n
+                <!--Boton de notificacion
                 <button type="button" class="btn btn-primary">
                   Notifications <span class="badge badge-light">4</span>
                 </button>
                   -->
 
                 
-                  <!--Creacion de inicio de Seci�n-->
+                  <!--Creacion de inicio de Secion-->
                   <button type="button" data-toggle="modal" data-target="#registrarModal" style="margin-left: 15px">
                     <img src="imagen/registrar.png"  width="50px" height="50px"> 
                     
@@ -156,34 +203,40 @@
                         </div>
                         <div class="modal-body">
                           
-                     <form id="formRegistrar">
-                          
+                     <form action="index.php" method="POST">
+
+                     <?php  if(isset($verificar_usuario)){
+                          echo $verificar_usuario;
+                     }
+                     ?>     
+
+                     
                             <div class="form-group">
                             <label for="">Nombre: &nbsp; </label>
                             
-                            <input type="text" class="form-control" id="nombre" placeholder="Nombre del usuario">
+                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del usuario">
                           </div>
                           <br>
                           <div class="form-group">
                             <label for="">Correo Electronico: &nbsp; </label>
                             
-                            <input type="email" class="form-control" id="correo" placeholder="email@example.com">
+                            <input type="email" class="form-control" name="correo" id="correo" placeholder="email@example.com">
                           </div>
                           <br>
                           <div class="form-group">
                             <label for="">Usuario: &nbsp; </label>
                           
-                            <input type="text" class="form-control" id="username" placeholder="Usuario">
+                            <input type="text" class="form-control" name="username" id="username" placeholder="Usuario">
                           </div>
                           <br>
                           <div class="form-group">
                             <label for="">Contraseña: &nbsp; </label>
                           
-                            <input type="password" class="form-control" id="contrasena" placeholder="Contraseña">
+                            <input type="password" class="form-control" name="contrasena" id="contrasena" placeholder="Contraseña">
                           </div>
                           <br>
                           
-                          <select class="form-control" id="idTipoUsuario">
+                          <select class="form-control" name="idTipoUsuario" id="idTipoUsuario">
                           
                           <option value="1">cliente</option>
                           
@@ -191,7 +244,7 @@
                           </select>
                          
                           <br>
-                          <button type="Enviar" class="btn btn-primary" id="registrarButton">Registrarse</button>
+                          <input type="submit" class="btn btn-primary" value="Registrar">
                         
                       </form>
                          
@@ -414,7 +467,7 @@
 
       <div class="col-md-12" style="margin-top: 15px">
 
-        <p class="txt">Direcci�n: Francisco Javier Mina #502 &nbsp; &nbsp; <b>&copy;Derechos Reservados 2019 </b>
+        <p class="txt">Dirección: Francisco Javier Mina #502 &nbsp; &nbsp; <b>&copy;Derechos Reservados 2019 </b>
           &nbsp; &nbsp;
           compas.paleria.5@gmail.com</p>
 
