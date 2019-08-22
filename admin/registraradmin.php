@@ -1,3 +1,52 @@
+<?php
+/*Requerir conexion con la BD*/
+   $servidor = "localhost";
+   $nombreusuario = "root";
+   $password = "";
+   $db = "papeleria";
+   
+   $conexion = new mysqli($servidor, $nombreusuario, $password, $db);
+
+   if($conexion->connect_error){
+     die("Conexion fallida: " . $conexion->connect_error);
+   }
+
+  $message = '';
+
+  if (isset($_POST['contrasena']) && isset($_POST['correo']) && isset($_POST['nombre']) && isset($_POST['idTipoUsuario']) && isset($_POST['username'])){
+    /*Vincular parametros*/
+    $contrasena = $_POST ['contrasena'];
+    $correo = $_POST ['correo'];
+    $nombre = $_POST ['nombre'];
+    $idTipoUsuario = $_POST ['idTipoUsuario'];
+    $username = $_POST ['username'];
+    
+    /*Agregar datos a la BD*/
+    $sql = "INSERT INTO usuario (contrasena, correo, nombre, idTipoUsuario, username) VALUES ('$contrasena', '$correo', '$nombre', '$idTipoUsuario', '$username')"; 
+    
+    /*Ejecutar consulta para evitar usuarios repetidos*/
+
+    $verificar_usuario = mysqli_query($conexion, "SELECT * FROM usuario WHERE correo = '$correo'");
+    if (mysqli_num_rows($verificar_usuario) > 0) {
+      $verificar_usuario = "El usuario ingresado ya esta registrado";
+
+      include_once 'registraradmin.php';
+    }
+
+
+    
+
+
+  if ($conexion->query($sql) === true){
+    $message = 'Tu usuario ha sido creado exitosamente';
+} else{
+    die ("Lo sentimos ha ocurrido un error al intentar registrarlo: " . $conexion->error);
+}
+$conexion->close();
+
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -198,35 +247,38 @@
    
    
    
-                <form id="formRegistrar"  >
-                          
+                <form action="registraradmin.php" method="POST"  >
+
+
+
+
                         <div class="form-group">
                         <label for="">Nombre: &nbsp; </label>
                         
-                        <input type="text" class="form-control" id="nombre" placeholder="Nombre del usuario">
+                        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del usuario">
                       </div>
                       <br>
                       <div class="form-group">
                         <label for="">Correo Electronico: &nbsp; </label>
                         
-                        <input type="email" class="form-control" id="correo" placeholder="email@example.com">
+                        <input type="email" class="form-control" name="correo" id="correo" placeholder="email@example.com">
                       </div>
                       <br>
                       <div class="form-group">
                         <label for="">Usuario: &nbsp; </label>
                       
-                        <input type="text" class="form-control" id="username" placeholder="Usuario">
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Usuario">
                       </div>
                       <br>
                       <div class="form-group">
                         <label for="">Contraseña: &nbsp; </label>
                       
-                        <input type="password" class="form-control" id="contrasena" placeholder="Contraseña">
+                        <input type="password" class="form-control" name="contrasena" id="contrasena" placeholder="Contraseña">
                       </div>
                       <br>
                       <label for="">Tipo de usuario: &nbsp; </label>
                       <br>
-                      <select class="form-control" id="idTipoUsuario">
+                      <select class="form-control" name="idTipoUsuario" id="idTipoUsuario">
                       
                       <option value="2">administrador</option>
                       
@@ -234,7 +286,7 @@
                       </select>
                      
                       <br>
-                      <button type="Enviar" class="btn btn-primary" id="registrarButton">Registrarse</button>
+                      <input type="submit" class="btn btn-primary" value="Registrar">
                     
                   </form>
             
