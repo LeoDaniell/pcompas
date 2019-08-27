@@ -1,4 +1,69 @@
 <?php
+    include_once '../database.php';
+    
+    session_start();
+
+    if(isset($_GET['cerrar'])){
+        session_unset(); 
+
+        // destroy the session 
+        session_destroy(); 
+    }
+    
+    if(isset($_SESSION['idTipoUsuario'])){
+        switch($_SESSION['idTipoUsuario']){
+            case 1:
+                header('location: ../cliente/iniciocli.php');
+            break;
+
+            case 2:
+                header('location: ../admin/registrar.php');
+            break;
+
+            default:
+        }
+    }
+
+    if(isset($_POST['username']) && isset($_POST['contrasena'])){
+        $username = $_POST['username'];
+        $contrasena = $_POST['contrasena'];
+
+        $db = new Database();
+        $query = $db->connect()->prepare('SELECT *FROM usuario WHERE username = :username AND contrasena = :contrasena');
+        $query->execute(['username' => $username, 'contrasena' => $contrasena]);
+
+        $row = $query->fetch(PDO::FETCH_NUM);
+        
+        if($row == true){
+            $idTipoUsuario = $row[4];
+            
+            $_SESSION['idTipoUsuario'] = $idTipoUsuario;
+            switch($idTipoUsuario){
+                case 1:
+                    header('location: ../cliente/iniciocli.php');
+                break;
+
+                case 2:
+                header('location: ../admin/registrar.php');
+                break;
+
+                default:
+            }
+        }else{
+            // no existe el usuario
+            $errorLogin = "Nombre de usuario o contraseña incorrecto";
+
+             include_once 'impresion.php';
+        }
+        
+
+    }
+
+?>
+
+
+
+<?php
 /*Requerir conexion con la BD*/
 
 require 'conexioncrearusuario.php';
