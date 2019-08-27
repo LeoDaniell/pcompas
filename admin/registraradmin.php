@@ -1,15 +1,6 @@
 <?php
 /*Requerir conexion con la BD*/
-   $servidor = "localhost";
-   $nombreusuario = "root";
-   $password = "";
-   $db = "papeleria";
-   
-   $conexion = new mysqli($servidor, $nombreusuario, $password, $db);
-
-   if($conexion->connect_error){
-     die("Conexion fallida: " . $conexion->connect_error);
-   }
+require '../usuario/conexioncrearusuario.php';
 
   $message = '';
 
@@ -25,15 +16,29 @@
     $sql = "INSERT INTO usuario (contrasena, correo, nombre, idTipoUsuario, username) VALUES ('$contrasena', '$correo', '$nombre', '$idTipoUsuario', '$username')"; 
     
     /*Ejecutar consulta para evitar usuarios repetidos*/
+    $verificarRepetidos = mysqli_query($conexion, "SELECT * FROM usuario WHERE username = '$username'");
+    if (mysqli_num_rows($verificarRepetidos) > 0){
+      echo "<script> alert('Este usuario ya existe');
+      location.href= 'registrar.php';
+      </script>";
+      exit;
+      }
 
-    $verificar_usuario = mysqli_query($conexion, "SELECT * FROM usuario WHERE correo = '$correo'");
-    if (mysqli_num_rows($verificar_usuario) > 0) {
-      $verificar_usuario = "El usuario ingresado ya esta registrado";
+      if($sql) {
 
-      include_once 'registraradmin.php';
-    }
-
-
+        echo "<script> alert('Su registro ha sido exitoso');
+        location.href= 'registrar.php';
+        </script>";
+        
+    
+       }else{
+        echo "<script> alert('Hubo un error al registrarlo');
+        location.href= 'registrar.php';
+        </script>";
+    
+    
+       }
+  
     
 
 

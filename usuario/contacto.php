@@ -62,56 +62,6 @@
 ?>
 
 
-<?php
-/*Requerir conexion con la BD*/
-   $servidor = "localhost";
-   $nombreusuario = "root";
-   $password = "";
-   $db = "papeleria";
-   
-   $conexion = new mysqli($servidor, $nombreusuario, $password, $db);
-
-   if($conexion->connect_error){
-     die("Conexion fallida: " . $conexion->connect_error);
-   }
-
-  $message = '';
-
-  if (isset($_POST['contrasena']) && isset($_POST['correo']) && isset($_POST['nombre']) && isset($_POST['idTipoUsuario']) && isset($_POST['username'])){
-    /*Vincular parametros*/
-    $contrasena = $_POST ['contrasena'];
-    $correo = $_POST ['correo'];
-    $nombre = $_POST ['nombre'];
-    $idTipoUsuario = $_POST ['idTipoUsuario'];
-    $username = $_POST ['username'];
-    
-    /*Agregar datos a la BD*/
-    $sql = "INSERT INTO usuario (contrasena, correo, nombre, idTipoUsuario, username) VALUES ('$contrasena', '$correo', '$nombre', '$idTipoUsuario', '$username')"; 
-    
-    /*Ejecutar consulta para evitar usuarios repetidos*/
-
-    $verificar_usuario = mysqli_query($conexion, "SELECT * FROM usuario WHERE username = '$username'");
-    if (mysqli_num_rows($verificar_usuario) > 0) {
-      $verificar_usuario = "El usuario ingresado ya esta registrado";
-
-      include_once 'index.php';
-    }
-
-
-    
-
-
-  if ($conexion->query($sql) === true){
-    $message = 'Tu usuario ha sido creado exitosamente';
-} else{
-    die ("Lo sentimos ha ocurrido un error al intentar registrarlo: " . $conexion->error);
-}
-$conexion->close();
-
-}
-?>
-
-
 <!doctype html>
 <html lang="es">
 
@@ -181,82 +131,12 @@ $conexion->close();
                   -->
 
 
-              <!--Creacion de inicio de Seción-->
+              <!--Creacion de crear cliente-->
               <button type="button" data-toggle="modal" data-target="#registrarModal" style="margin-left: 15px">
-                <img src="../imagen/registrar.png" width="50px" height="50px">
+              <a href="registrarcli.php"><img src="../imagen/registrar.png" width="50px" height="50px"></a>
 
 
               </button>
-
-
-              <!-- Modal -->
-              <div class="modal fade" id="registrarModal" aria-labelledby="registrarModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="registrarModalLabel">Registrarse</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Enviar">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-
-                    <form action="" method="POST">
-
-                      <?php  if(isset($verificar_usuario)){
-                          echo $verificar_usuario;
-                     }
-                     ?>     
-
-                     
-                            <div class="form-group">
-                            <label for="">Nombre: &nbsp; </label>
-                            
-                            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del usuario">
-                          </div>
-                          <br>
-                          <div class="form-group">
-                            <label for="">Correo Electronico: &nbsp; </label>
-                            
-                            <input type="email" class="form-control" name="correo" id="correo" placeholder="email@example.com">
-                          </div>
-                          <br>
-                          <div class="form-group">
-                            <label for="">Usuario: &nbsp; </label>
-                          
-                            <input type="text" class="form-control" name="username" id="username" placeholder="Usuario">
-                          </div>
-                          <br>
-                          <div class="form-group">
-                            <label for="">Contraseña: &nbsp; </label>
-                          
-                            <input type="password" class="form-control" name="contrasena" id="contrasena" placeholder="Contraseña">
-                          </div>
-                          <br>
-                          
-                          <select class="form-control" name="idTipoUsuario" id="idTipoUsuario">
-                          
-                          <option value="1">cliente</option>
-                          
-                          
-                          </select>
-                         
-                          <br>
-                          <input type="submit" class="btn btn-primary" value="Registrar">
-                        
-                      </form>
-
-
-                    </div>
-
-                  </div>
-
-                </div>
-              </div>
-
-
-
-
 
               <!--Creacion de inicio de Seción-->
               <button type="button" data-toggle="modal" data-target="#ingresarModal" style="margin-left: 15px">
@@ -403,6 +283,7 @@ $conexion->close();
       </div>
 
 
+    </div>
     </div>
 
     <!--Fin del contenido-->
