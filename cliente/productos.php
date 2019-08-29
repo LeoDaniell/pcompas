@@ -9,6 +9,8 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/estilo.css">
+  <link rel="stylesheet" href="../main.css">
+
 
 </head>
 
@@ -184,187 +186,54 @@
           </div>
         </div>
       </div>
-      <div class="container">
-        <!--seccion Contenido-->
-        <div class="row tit">
-  
-          <!-- Columna 1-->
-  
-          <div class="col-md-4" style="margin-top: 15px">
-            <p>
-              <div class="card" style="width: auto">
-               <a href="html/pru3.html"><img src="../imagen/Cartulina Iris.jpg"  width="300" height="300" class="card-img-top"></a> 
-                <div class="card-body">
-                  <h5 class="card-title">Cartulinas</h5>
-                  <p class="card-text">Cartulina de color, ligeramente satinada y coloreada en pasta con pigmentos sólidos
-                    a la luz. Aplicación: dibujo y manualidades. Papel de 185 g. Dimensiones: 210x297mm..</p>
-                </div>
-              </div>
-            </p>
-          </div>
-  
-          <!-- Columna 2-->
-  
-          <div class="col-md-4" style="margin-top: 15px">
-            <p>
-              <div class="card" style="width: auto">
-               <a href="html/pru8.html"><img src="../imagen/Compas de precision brazo largo MAE.jpg"  width="300" height="300" class="card-img-top"></a> 
-                <div class="card-body">
-                  <h5 class="card-title">Compás de precision</h5>
-                  <p class="card-text">Modelo CPP-2. Sistema de apertura del compás Bisagra. Tipo de punta Dibujo.
-                    Material Plástico. Largo 15 cm. Tipo de instrumento de dibujo Mina
-                  </p>
-                </div>
-              </div>
-            </p>
-          </div>
-  
-          <!-- Columna 3-->
-  
-          <div class="col-md-4" style="margin-top: 15px">
-            <p>
-              <div class="card" style="width: auto">
-               <a href="html/pru1.html"><img src="../imagen/calculadora  printaform 1595.jpg" width="300" height="300" class="card-img-top"></a> 
-                <div class="card-body">
-                  <h5 class="card-title">Calculadora</h5>
-                  <p class="card-text">56 funciones científicas. 8+2 dígitos.Alimentación: 1 batería.Corrección de entrada
-                    y corrección de dígito. Cálculos aritméticos y operaciones con fracciones. Memoria independiente.
-                    Apagado automático
-  
-                  </p>
-                </div>
-              </div>
-            </p>
-          </div>
-  
-  
-        </div>
-  
-  
-        <!--seccion Contenido-->
-        <div class="row tit">
-  
-          <!-- Columna 1-->
-  
-          <div class="col-md-4" style="margin-top: 15px">
-            <p>
-              <div class="card" style="width: auto">
-               <a href="html/pru2.html"><img src="../imagen/calculadora basica PRINTAFORM 1528.jpg" width="300" height="300" class="card-img-top"></a>  
-                <div class="card-body">
-                  <h5 class="card-title">Calculadora basica</h5>
-                  <p class="card-text"> Calculadora de bolsillo. 8 Digitos. 3 Teclas de memoria. Bateria AA" de 1.5v.
-                    Medidad: 6.3 X 11.4 X 2.3.</p>
-                </div>
-              </div>
-            </p>
-          </div>
-  
-          <!-- Columna 2-->
-  
-          <div class="col-md-4" style="margin-top: 15px">
-            <p>
-              <div class="card" style="width: auto">
-               <a href="html/pru4.html"><img src="../imagen/cartulina bristol blanca.jpg" width="300" height="300" class="card-img-top"></a> 
-                <div class="card-body">
-                  <h5 class="card-title">Cartulina Blanca</h5>
-                  <p class="card-text">Pliego cartulina bristol blanca cartulina bristol 160 gr tamaño pliego 70 x 100 cm
-                    cartulina multiproposito. Ideal para trabajos escolares. Compatible con impresion inkjet y laser de
-                    carro grande</p>
-                </div>
-              </div>
-            </p>
-          </div>
-  
-          <!-- Columna 3-->
-  
-          <div class="col-md-4" style="margin-top: 15px">
-            <p>
-              <div class="card" style="width: auto">
-               <a href="html/pru5.html"><img src="../imagen/cartulina bristol color.jpg" width="300" height="300" class="card-img-top"></a> 
-                <div class="card-body">
-                  <h5 class="card-title">Cartulina Color</h5>
-                  <p class="card-text">Es una hoja que pesa como una cartulina de capa simple, con el gramaje y el calibre
-                    (grosor) de una Bristol de dos capas. Pesa 100 lb (270 g/m2).</p>
-                </div>
-              </div>
-            </p>
-          </div>
-  
-  
-        </div>
-  
-  
-        <!--seccion Contenido-->
-        <div class="row tit">
-  
-          <!-- Columna 1-->
-  
-          <div class="col-md-4" style="margin-top: 15px">
-            <p>
-              <div class="card" style="width: auto">
-               <a href="html/pru7.html"><img src="../imagen/colores 12 BLANCA NIEVES.jpg" width="300" height="300" class="card-img-top"></a> 
-                <div class="card-body">
-                  <h5 class="card-title">Colores 12 Largos</h5>
-                  <p class="card-text">Lápices de colores blanca nieves largos. Estuche con 12 piezas</p>
-                </div>
-              </div>
-            </p>
-          </div>
-  
-          <!-- Columna 2-->
-  
-          <div class="col-md-4" style="margin-top: 15px">
-            <p>
-              <div class="card" style="width: auto">
-               <a href="html/pru6.html"><img src="../imagen/colores 12 BLANCA NIEVES largos.jpg"  width="300" height="300" class="card-img-top"></a> 
-                <div class="card-body">
-                  <h5 class="card-title">Colores 12 Cortos</h5>
-                  <p class="card-text">Lápices de colores blanca nieves cortos. Estuche con 12 piezas.</p>
-                </div>
-              </div>
-            </p>
-          </div>
-  
-          <!-- Columna 3-->
-  
-          <div class="col-md-4" style="margin-top: 15px">
-            <p>
-              <div class="card cjar" style="width: auto">
-               <a href="html/pru9.html"><img src="../imagen/crayola 24 regular.jpeg" width="300" height="300" class="card-img-top"></a> 
-                <div class="card-body">
-                  <h5 class="card-title">Crayola 24</h5>
-                  <p class="card-text">Cada crayón está hecho con cera, un material firme, seguro y no tóxico.
-                    La caja contiene 24 flamantes colores.</p>
-                </div>
-              </div>
-            </p>
-          </div>
-  
-  
-        </div>
-        <div class="row tit">
-  
-          <!-- Columna 1-->
-  
-          <div class="col-md-12" style="margin-top: 15px">
-            <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-      </li>
-    </ul>
-  </nav>
-          </div>
-  
-        </div>
-      </div>
 
+      <div class="container">
+            <!--Buscador-->
+            <div class="row tit "  >
+                <div class="col-md-12" style="margin-top: 15px;">
+                   
+               <?php
+                 include_once '../paginacion.php';
+
+                $producto = new Producto(9);        
+               ?>
+
+                <!-- Fila  -->
+               <div class="row">
+                <div class="col-md-12" id="container">
+                    <?php
+                    echo $producto->mostrarTotalResultados() . " resultados totales <br/>";
+                    ?>
+                    </div> 
+               </div>
+               
+
+               
+               <div class="row">
+                    <?php
+                       $producto->mostrarProducto();
+                    ?>
+               </div>
+                
+
+
+             
+               <div class="row">
+                   <div class="col-md-12" id="paginas">
+                       <?php
+                          $producto->mostrarPaginas();
+                       ?>
+                   </div>
+               </div>
+                
+            </div>
+        </div>    
+        
+              
+
+
+            </div>
+        <!--Fin del contenido-->
 <footer class="footer" style="margin-top:0px">
 
   <div class="container"  style="margin-bottom: 15px">

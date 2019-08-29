@@ -4,7 +4,7 @@
 
 
     $nombreProducto = $_POST['txtNombreProducto'];
-    $nombreMarca = $_POST['txtNombreMarca'];
+    $marca = $_POST['txtMarca'];
     $precio = $_POST['txtPrecio'];
     $cajas = $_POST['txtCajas'];
     $pzsCaja = $_POST['txtPzsCaja'];
@@ -12,7 +12,7 @@
 
     $imagen = $_FILES['foto']['name'];//obtiene el nombre
     $archivo= $_FILES['foto']['tmp_name'];//contiene el archivo
-    $ruta="../imagen";
+    $ruta="../imagenprodu";
 
 
     $ruta=$ruta."/".$imagen;
@@ -21,7 +21,7 @@
 
 
 
-    $insertar = "INSERT into producto values('', '$nombreProducto', '$nombreMarca', '$precio', '$cajas', '$pzsCaja', '$descripcion', '$ruta')";
+    $insertar = "INSERT into producto values('', '$nombreProducto', '$marca', '$precio', '$cajas', '$pzsCaja', '$descripcion', '$ruta')";
     $query = mysqli_query($conectar, $insertar);
 
    if($query) {

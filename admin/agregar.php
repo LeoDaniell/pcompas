@@ -225,7 +225,7 @@
                                         <p>
                                             Marca: &nbsp;
                                             <br>
-                                            <input type="text" name="txtNombreMarca" required>
+                                            <input type="text" name="txtMarca" required>
                                         </p>
                                     </div>
 
@@ -262,7 +262,7 @@
                                         <p>
                                             Descripción: &nbsp;
                                             <br>
-                                            <input type="text" name="txtDescripcion" required>
+                                            <input type="text" name="txtDescripcion" required maxlength="200">
                                         </p>
                                     </div>
 
@@ -300,7 +300,7 @@
 
                                 </div>
                                 <div class="container">
-                                    <div>
+                                    <div >
                                         <img class="dos" src="../imagen/signo-ad.jpg">
                                     </div>
 

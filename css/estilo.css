@@ -56,7 +56,7 @@
 
 .card{
 
-    width: 500px; height: 600px;
+    width: auto; height: 750px;
 }
 .botons
 {
@@ -167,11 +167,12 @@
     padding-top: 20px; 
     
 }
-.card
+ .card
 {
     text-align: center;
+    text-align: justify;
     border-radius: 20px;
-}
+} 
 button
 {
     border-block: none;
