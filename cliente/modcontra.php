@@ -1,23 +1,73 @@
-<!doctype html>
-<html lang="es">
+<!-- SE MODIFICO LA PARTE DE ACTUALIZAR CONTRASE;a-->
+<?php
+
+         if (isset($_POST['editar'])) {
+
+            require "../admin/conectbase.php";
+           
+
+
+            $passActual = $mysqli->real_escape_string($_POST['contrasena']);
+            $pass1 = $mysqli->real_escape_string($_POST['pass1']);
+            $pass2 = $mysqli->real_escape_string($_POST['pass2']);
+             require '../admin/conexion.php';
+    $idUsuario=$_GET['id'];
+  
+    $datos = "SELECT contrasena from usuario where idUsuario ='$idUsuario'";
+    $consultadata = mysqli_query($conectar,$datos);
+
+
+           
+            $row = $consultadata->fetch_array();
+
+            if ($row['contrasena'] == $passActual){
+
+               if($pass1 == $pass2){
+                   $upd = "UPDATE usuario SET contrasena = '$pass1' Where idUsuario ='$idUsuario'";
+                   $update = mysqli_query($conectar,$upd);
+                   if ($update) {echo "<script> alert('Se ha actualizado tu contraseña');
+                    location.href= 'iniciocli.php';
+                    </script>";}
+               }
+               else{
+                echo "<script> alert('Las dos contraseñas no coinciden');
+                location.href= '#';
+                </script>";
+               }
+            }
+            else{
+                echo "<script> alert('Tu contraseña actual no coincide');
+                    location.href= '#';
+                    </script>";
+            }
+
+
+         }     
+
+
+
+?>
+
+<!DOCTYPE html>
+<html>
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/estilo.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/estilo.css">
 
+    <title>Papeleria El Compás</title>
 </head>
 
 <body background="../imagen/pruebadefondo1.jpg">
-  <!--Contenedor Principal-->
-  <div class="container">
-
-    <!--Inician botones-->
+    <!--Contenedor Principal-->
     <div class="container">
+        <!--Contenedor Botones-->
+        <div class="container">
 
         <div class="row caja" style="margin-top:20px">
   
@@ -41,8 +91,8 @@
                     </li>
                     
                     <li class="nav-item active">
-                      <a class="nav-link" href="productos.php"><button class="btn btn-primary"
-                          type="submit">Productos</button></a>
+                    <?php  echo "<a class='nav-link' href='productos.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?><button class="btn btn-primary"
+                                                    type="submit">Productos</button></a>
                     </li>
                     
                     <li class="nav-item dropdown">
@@ -51,13 +101,14 @@
                           <button class="btn btn-primary" type="submit">Servicios Extras</button>
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="recarga.php">Recargas</a>
-                         <a class="dropdown-item" href="impresiones.php">Impresiones</a>
+                      <?php  echo "<a class='dropdown-item' href='recarga.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?> Recargas</a>
+                      <?php  echo "<a class='dropdown-item' href='impresiones.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?> Impresiones</a>
+                                                
                       </div> 
                   </li>
                     <li class="nav-item active">
-                      <a class="nav-link" href="contacto.php"><button class="btn btn-primary"
-                          type="submit">Contacto</button></a>
+                    <?php  echo "<a class='nav-link' href='contacto.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?><button class="btn btn-primary"
+                                                    type="submit">Contacto</button></a>
                     </li>
   
                   </ul>
@@ -102,8 +153,7 @@
 
                                                       
 
-                                                          <a class="btn btn-primary " href="modcontra.php">Modificar contraseña</a>
-                                                      
+                                                          <?php  echo "<a class='btn btn-primary' href='modcontra.php?id=".$_GET['id']."'>Cambiar contraseña</a></td>";//<<<<-----se modifico esta parte para mandar el id a modif contrase;a  ?>
                                                       
                                                       
                                                       
@@ -140,6 +190,7 @@
                                                       <a class="btn btn-primary btnrojo" href="../logout.php">Cerrar sesión</a>
   
                                                       </form>
+  
                           </div>
   
                         </div>
@@ -164,7 +215,7 @@
         </div>
       </div>
 
-  <!--inicia Contenido-->
+     <!--inicia Contenido-->
   <div class="container">
         <div class="row tit" style="margin-top: 15px" >
            
@@ -175,65 +226,87 @@
    
    
    
-       <div class="card" style="width: auto;  margin-bottom: 15px">
-         <div class="card-header">
-           Modificar Contraseña
+       <div class="card" style="width: auto;height: auto;  margin-bottom: 15px; margin-top: 15px">
+         <div class="card-header"  >
+           Modificar administrador
          </div>
-         <div class="card-body">
+         <div class="card-body" >
    
-   
-   
-           <div class="form-group" style="margin-top: 100px" style="width: 50px">
-             <label>Contraseña: &nbsp; </label>
+         
+
+
+
+
+<form action="#" method="POST">
+         <div class="form-group" style="margin-top: 100px" style="width: 50px">
+             <label>Contraseña actual: &nbsp; </label>
              <br>
-             <input type="password" class="form-control" id="ingresarInputPassword1"
+             <input type="password" class="form-control" name="contrasena"
                placeholder="Ingresar contraseña actual">
    
            </div>
            <div class="form-group" style="margin-top: 15px">
              <label>Nueva contraseña: &nbsp; </label>
              <br>
-             <input type="password" class="form-control" id="ingresarInputPassword2"
+             <input type="password" class="form-control" name="pass1"
                placeholder="Ingresar nueva contraseña">
            </div>
-           <a href="#" class="btn btn-primary">Modificar contraseña</a>
+           <?php if (isset($existe)) {echo $existe;} ?>
+
+           <div class="form-group" style="margin-top: 15px">
+             <label>Escribe otra vez tu contraseña: &nbsp; </label>
+             <br>
+             <input type="password" class="form-control" name="pass2"
+               placeholder="Ingresar nueva contraseña">
+           </div>
+
+           <input type="submit" class="btn btn-primary" value="Cambiar contraseña" name="editar">
+            
+            </form>
+          
          </div>
        </div>
      </div>
    </div>
        </div>
 
-<footer class="footer" style="margin-top:0px">
+    <!--Fin del contenido-->
+  <footer class="footer" style="margin-top:0px">
 
-  <div class="container"  style="margin-bottom: 15px">
-    <!--Inicio pie de pagina-->
-    <div class="row mipie" >
+        <div class="container"  style="margin-bottom: 15px">
 
-      <div class="col-md-12" style="margin-top: 15px">
-
-        <p class="txt">Dirección: Francisco Javier Mina #502 &nbsp; &nbsp; <b>&copy;Derechos Reservados 2019 </b>
-          &nbsp; &nbsp;
-          compas.paleria.5@gmail.com</p>
-
+<!--Inicio pie de pagina-->
+<div class="row mipie" >
+    
+        <div class="col-md-12" style="margin-top: 15px">
+  
+          <p class="txt">Dirección: Francisco Javier Mina #502 &nbsp; &nbsp; <b>&copy;Derechos Reservados 2019 </b>
+            &nbsp; &nbsp;
+            compas.paleria.5@gmail.com</p>
+  
+        </div>
+  
+  
+  
+  
       </div>
-
-
-
-
+  
     </div>
-
-  </div>
-
-
-</footer>
-
-  </div>
+  
+  
+  </footer>
 
 
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="../js/jquery-3.4.1.min.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
+</div>
+
+
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 </body>
 
 </html>

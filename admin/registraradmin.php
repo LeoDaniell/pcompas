@@ -260,30 +260,29 @@ $conexion->close();
                         <div class="form-group">
                         <label for="">Nombre: &nbsp; </label>
                         
-                        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del usuario">
+                        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre del usuario" required>
                       </div>
                       <br>
                       <div class="form-group">
                         <label for="">Correo Electronico: &nbsp; </label>
                         
-                        <input type="email" class="form-control" name="correo" id="correo" placeholder="email@example.com">
+                        <input type="email" class="form-control" name="correo" id="correo" placeholder="email@example.com" required>
                       </div>
                       <br>
                       <div class="form-group">
                         <label for="">Usuario: &nbsp; </label>
                       
-                        <input type="text" class="form-control" name="username" id="username" placeholder="Usuario">
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Usuario" required>
                       </div>
                       <br>
                       <div class="form-group">
                         <label for="">Contraseña: &nbsp; </label>
                       
-                        <input type="password" class="form-control" name="contrasena" id="contrasena" placeholder="Contraseña">
+                        <input  type="password" class="form-control" name="contrasena" id="contrasena" placeholder="Contraseña" required>
                       </div>
-                      <br>
-                      <label for="">Tipo de usuario: &nbsp; </label>
-                      <br>
-                      <select class="form-control" name="idTipoUsuario" id="idTipoUsuario">
+
+                      
+                      <select  class="form-control" name="idTipoUsuario" id="idTipoUsuario" hidden>
                       
                       <option value="2">administrador</option>
                       

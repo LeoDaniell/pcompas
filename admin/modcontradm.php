@@ -1,5 +1,52 @@
+<!-- SE MODIFICO LA PARTE DE ACTUALIZAR CONTRASE;a-->
+<?php
+
+         if (isset($_POST['editar'])) {
+
+            require "conectbase.php";
+           
 
 
+            $passActual = $mysqli->real_escape_string($_POST['contrasena']);
+            $pass1 = $mysqli->real_escape_string($_POST['pass1']);
+            $pass2 = $mysqli->real_escape_string($_POST['pass2']);
+             require 'conexion.php';
+    $idUsuario=$_GET['id'];
+  
+    $datos = "SELECT contrasena from usuario where idUsuario ='$idUsuario'";
+    $consultadata = mysqli_query($conectar,$datos);
+
+
+           
+            $row = $consultadata->fetch_array();
+
+            if ($row['contrasena'] == $passActual){
+
+               if($pass1 == $pass2){
+                   $upd = "UPDATE usuario SET contrasena = '$pass1' Where idUsuario ='$idUsuario'";
+                   $update = mysqli_query($conectar,$upd);
+                   if ($update) {echo "<script> alert('Se ha actualizado tu contraseña');
+                    location.href= 'registrar.php';
+                    </script>";}
+               }
+               else{
+                echo "<script> alert('Las dos contraseñas no coinciden');
+                location.href= '#';
+                </script>";
+               }
+            }
+            else{
+                echo "<script> alert('Tu contraseña actual no coincide');
+                    location.href= '#';
+                    </script>";
+            }
+
+
+         }     
+
+
+
+?>
 
 <!DOCTYPE html>
 <html>
@@ -27,7 +74,7 @@
                         <div class="col-md-12 " style="margin-bottom: 0px" style="margin-top: 5px;">
                 
                                 <nav class="navbar navbar-expand-lg navbar-light">
-                                        <a class="navbar-brand" href="inicio"><img src="../imagen/Logo aprovado.png"  width="250px"
+                                        <a class="navbar-brand" href="registrar.php"><img src="../imagen/Logo aprovado.png"  width="250px"
                                             height="250px"  > </a>
                                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                                           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +85,7 @@
                                         <ul class="navbar-nav mr-auto">
 
                                     <li class="nav-item active">
-                                        <a class="nav-link" href="registrar"><button class="btn btn-primary"
+                                        <a class="nav-link" href="registrar.php"><button class="btn btn-primary"
                                                 type="submit">Ventas</button></a>
                                     </li>
                                     <li class="nav-item dropdown">
@@ -48,9 +95,9 @@
                                             <button class="btn btn-primary" type="submit">Gestion Productos</button>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="modificar">Editar Producto</a>
-                                            <a class="dropdown-item" href="agregar">Agregar nuevo Producto</a>
-                                        </div>
+                                        <?php  echo "<a class='nav-link' href='modificar.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?>Editar producto</a>
+                                            <?php  echo "<a class='nav-link' href='agregar.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?>Agregar producto</a>
+                                 </div>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
@@ -69,8 +116,8 @@
 
                                     </li>
                                     <li class="nav-item active">
-                                        <a class="nav-link" href="inventario"><button class="btn btn-primary"
-                                                type="submit">Inventario</button></a>
+                                    <?php  echo "<a class='nav-link' href='inventario.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?><button class="btn btn-primary"
+                                                    type="submit">Inventario</button></a>
                                     </li>
 
 
@@ -131,7 +178,7 @@
                                                                 </div>
                                                             </form>
 
-                                                            <a class="btn btn-primary " href="modcontradm.php">Cambiar contraseña</a>
+                                                            <?php  echo "<a class='btn btn-primary' href='modcontradm.php?id=".$_GET['id']."'>Cambiar contraseña</a></td>";//<<<<-----se modifico esta parte para mandar el id a modif contrase;a  ?> 
 
                                                             <div class="form-group" style="margin-top: 15px">
 
@@ -182,6 +229,7 @@
 
 </div>
 </div>
+
      <!--inicia Contenido-->
   <div class="container">
         <div class="row tit" style="margin-top: 15px" >
@@ -199,46 +247,12 @@
          </div>
          <div class="card-body" >
    
-        <form action="" method="post"> 
-
-
-<?php
-
-         if (isset($_POST['editar'])) {
-
-            require "conectbase.php";
-
-
-            $passActual = $mysqli->real_escape_string($_POST['passActual']);
-            $pass1 = $mysqli->real_escape_string($_POST['pass1']);
-            $pass2 = $mysqli->real_escape_string($_POST['pass2']);
-
-
-            $sqlA = $mysqli->query("SELECT contrasena FROM usuario WHERE idTipoUsuario = '".$_SESSION['idTipoUsuario']. "'");
-            $row = $sqlA->fetch_array();
-
-            if ($row['contrasena'] == $passActual){
-
-               if($pass1 == $pass2){
-                   $update = $mysqli->query("UPDATE usuario SET contrasena = '$pass1' Where idTipoUsuario = '".$_SESSION['idTipoUsuario']. "'");
-                   if ($update) {echo "Se ha actualizado tu contraseña";}
-               }
-               else{
-                   echo"Las dos contraseñas no coinciden";
-               }
-            }
-            else{
-                echo "Tu contraseña actual no coincide";
-            }
-
-
-         }     
+         
 
 
 
-?>
 
-   
+<form action="#" method="POST">
          <div class="form-group" style="margin-top: 100px" style="width: 50px">
              <label>Contraseña actual: &nbsp; </label>
              <br>

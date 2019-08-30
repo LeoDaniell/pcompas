@@ -1,15 +1,27 @@
 <?php
+ 
+ require '../admin/conexion.php';
 
     session_start();
+  
+    $idUsuario=$_SESSION['id'];//<<<<-----se modifico desde el index y tambien esta primera parte 
+    $datos = "SELECT * from usuario where idUsuario ='$idUsuario'";
+    $consultadata = mysqli_query($conectar,$datos);
 
-    if(!isset($_SESSION['idTipoUsuario'])){
+    $array=mysqli_fetch_array($consultadata);
+     if($array == true){
+            $idTipoUsuario = $array[4];
+
+    
+
+    if(!$idTipoUsuario){
         header('location: ../index.php');
     }else{
-        if($_SESSION['idTipoUsuario'] != 1){
+        if($idTipoUsuario != 1){
             header('location: ../index.php');
         }
-    }
-
+    }//<<<<-----hasta aqui y parte de abajo tambien esta comentada en la parte para modificar contrase;a
+}
 
 ?>
 
@@ -57,8 +69,8 @@
                     </li>
                     
                     <li class="nav-item active">
-                      <a class="nav-link" href="productos.php"><button class="btn btn-primary"
-                          type="submit">Productos</button></a>
+                    <?php  echo "<a class='nav-link' href='productos.php?id=".$idUsuario."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?><button class="btn btn-primary"
+                                                    type="submit">Productos</button></a>
                     </li>
                     
                     <li class="nav-item dropdown">
@@ -67,13 +79,14 @@
                           <button class="btn btn-primary" type="submit">Servicios Extras</button>
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="recarga.php">Recargas</a>
-                         <a class="dropdown-item" href="impresiones.php">Impresiones</a>
+                      <?php  echo "<a class='dropdown-item' href='recarga.php?id=".$idUsuario."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?> Recargas</a>
+                      <?php  echo "<a class='dropdown-item' href='impresiones.php?id=".$idUsuario."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?> Impresiones</a>
+                                                
                       </div> 
                   </li>
                     <li class="nav-item active">
-                      <a class="nav-link" href="contacto.php"><button class="btn btn-primary"
-                          type="submit">Contacto</button></a>
+                    <?php  echo "<a class='nav-link' href='contacto.php?id=".$idUsuario."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?><button class="btn btn-primary"
+                                                    type="submit">Contacto</button></a>
                     </li>
   
                   </ul>
@@ -118,8 +131,7 @@
 
                                                       
 
-                                                          <a class="btn btn-primary " href="modcontra.php">Modificar contraseña</a>
-                                                      
+                                                          <?php  echo "<a class='btn btn-primary' href='modcontra.php?id=".$idUsuario."'>Cambiar contraseña</a></td>";//<<<<-----se modifico esta parte para mandar el id a modif contrase;a  ?>
                                                       
                                                       
                                                       

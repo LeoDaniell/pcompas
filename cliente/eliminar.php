@@ -1,3 +1,20 @@
+<?php
+	require_once "../admin/conexion.php";
+	if(isset($_GET['id'])){
+		$id=$_GET['id'];
+		$query="DELETE FROM usuario WHERE id='$id'";
+		if($mysqli->query($query)){
+			echo "Registro eliminado";
+		}else{
+			echo "Error no se pudo eliminar el registro";
+		}
+	}else{
+		echo "Error no se pudo procesar la peticion";
+	}
+?>
+
+
+
 <!doctype html>
 <html lang="es">
 
@@ -183,7 +200,7 @@
                 <label>Usted eliminará de la base de datos el cliente con el usuario: &nbsp; </label>
                 <div class="row tit" style="margin-top: 15px;"></div>
                 <br>
-                <form class="form-inline">
+                <form class="form-inline" method="GET" >
                 <div class="form-group mb-2"    >
                   <label for="staticEmail2" class="sr-only" >Usuario cliente</label>
                   <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="cuentacliente@example.com">
@@ -193,7 +210,7 @@
                   <input type="password" class="form-control" id="inputPassword2" placeholder="Contraseña">
                 </div>
                 <div class="col-md-12 " style="margin-top: 15px"></div>
-                <button type="submit" class="btn btn-primary mb-2 btnrojo" style="margin: auto">Eliminar cuenta</button>
+                <input type="submit" class="btn btn-primary mb-2 btnrojo" style="margin: auto" value="Eliminar cuenta" name="id">
               </form>
           </div>
         </div>

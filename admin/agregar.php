@@ -46,9 +46,9 @@
                                                         Productos</button>
                                                 </a>
                                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                    <a class="dropdown-item" href="modificar.php">Editar Producto</a>
-                                                    <a class="dropdown-item" href="agregar.php">Agregar nuevo Producto</a>
-                                                </div>
+                                                <?php  echo "<a class='nav-link' href='modificar.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?>Editar producto</a>
+                                            <?php  echo "<a class='nav-link' href='agregar.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?>Agregar producto</a>
+                                 </div>
                                             </li>
                                             <li class="nav-item dropdown">
                                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
@@ -68,8 +68,8 @@
 
                                             </li>
                                             <li class="nav-item active">
-                                                <a class="nav-link" href="inventario.php"><button class="btn btn-primary"
-                                                        type="submit">Inventario</button></a>
+                                            <?php  echo "<a class='nav-link' href='inventario.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?><button class="btn btn-primary"
+                                                    type="submit">Inventario</button></a>
                                             </li>
 
 
@@ -128,7 +128,7 @@
                                                                 </div>
                                                             </form>
 
-                                                            <a class="btn btn-primary " href="modcontradm.php">Cambiar contraseña</a>
+                                                            <?php  echo "<a class='btn btn-primary' href='modcontradm.php?id=".$_GET['id']."'>Cambiar contraseña</a></td>";//<<<<-----se modifico esta parte para mandar el id a modif contrase;a  ?> 
 
                                                             <div class="form-group" style="margin-top: 15px">
 
@@ -188,11 +188,11 @@
                 <div class="card cards" style="margin-top: 15px" style="margin-bottom: 15px;">
                     <div class="card-header" style="margin-bottom: 15px">
                         <ul class="nav nav-tabs card-header-tabs" style="margin-top: 15px">
-                            <li class="nav-item">
-                                <a class="nav-link " href="modificar.php">Editar Producto</a>
+                        <li class="nav-item">
+                            <?php  echo "<a class='nav-link ' href='modificar.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?>Editar producto</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="agregar.php">Agregar Producto</a>
+                            <?php  echo "<a class='nav-link active' href='agregar.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?>Agregar producto</a>
                             </li>
 
                         </ul>

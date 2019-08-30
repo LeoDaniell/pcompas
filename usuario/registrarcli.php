@@ -289,10 +289,8 @@ height="250px"  > </a>
                       
                         <input type="password" class="form-control" name="contrasena" id="contrasena" placeholder="Contraseña" required>
                       </div>
-                      <br>
-                      <label for="">Tipo de usuario: &nbsp; </label>
-                      <br>
-                      <select class="form-control" name="idTipoUsuario" id="idTipoUsuario">
+                      
+                      <select class="form-control" name="idTipoUsuario" id="idTipoUsuario" hidden>
                       
                       <option value="1">Cliente</option>
                       

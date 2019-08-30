@@ -31,22 +31,31 @@
 
         $db = new Database();
         $query = $db->connect()->prepare('SELECT  *FROM usuario WHERE username = :username AND contrasena = :contrasena');
-        $query->execute(['username' => $username, 'contrasena' => $contrasena]);
+             $query->execute(['username' => $username, 'contrasena' => $contrasena]);
+
 
         $row = $query->fetch(PDO::FETCH_NUM);
         
-        if($row == true){
+        if($row == true){ //<<<<------SE MODIFICO DESDE AQUI
             $idTipoUsuario = $row[4];
             
-            $_SESSION['idTipoUsuario'] = $idTipoUsuario;
+            
             switch($idTipoUsuario){
                 case 1:
-                    header('location: cliente/iniciocli.php');
+                $idu=$row[0];
+               $_SESSION['id']=$idu;
+                   header('location: cliente/iniciocli.php');
                 break;
 
                 case 2:
+                $idu=$row[0];
+               $_SESSION['id']=$idu;
+               echo $idu;
+               $nombre=$row[3];
+               $_SESSION['nombre']=$nombre;
+               echo $nombre;
                 header('location: admin/registrar.php');
-                break;
+                break;//<<<<-----HASTA AQUI "no fueron muchos cambios y no afectan el demas funcionamiento"
 
                 default:
             }

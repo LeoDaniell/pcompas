@@ -1,15 +1,27 @@
 <?php
+ 
+ require 'conexion.php';
 
     session_start();
+  
+    $idUsuario=$_SESSION['id'];//<<<<-----se modifico desde el index y tambien esta primera parte 
+    $datos = "SELECT * from usuario where idUsuario ='$idUsuario'";
+    $consultadata = mysqli_query($conectar,$datos);
 
-    if(!isset($_SESSION['idTipoUsuario'])){
+    $array=mysqli_fetch_array($consultadata);
+     if($array == true){
+            $idTipoUsuario = $array[4];
+
+    
+
+    if(!$idTipoUsuario){
         header('location: ../index.php');
     }else{
-        if($_SESSION['idTipoUsuario'] != 2){
+        if($idTipoUsuario != 2){
             header('location: ../index.php');
         }
-    }
-
+    }//<<<<-----hasta aqui y parte de abajo tambien esta comentada en la parte para modificar contrase;a
+}
 
 ?>
 
@@ -63,8 +75,9 @@
                                                 <button class="btn btn-primary" type="submit">Gestion Productos</button>
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item" href="modificar.php">Editar Producto</a>
-                                                <a class="dropdown-item" href="agregar.php">Agregar nuevo Producto</a>
+                                            <?php  echo "<a class='nav-link' href='modificar.php?id=".$idUsuario."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?>Editar producto</a>
+                                            <?php  echo "<a class='nav-link' href='agregar.php?id=".$idUsuario."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?>Agregar producto</a>
+                                                
                                             </div>
                                         </li>
                                         <li class="nav-item dropdown">
@@ -84,7 +97,7 @@
 
                                         </li>
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="inventario.php"><button class="btn btn-primary"
+                                        <?php  echo "<a class='nav-link' href='inventario.php?id=".$idUsuario."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?><button class="btn btn-primary"
                                                     type="submit">Inventario</button></a>
                                         </li>
 
@@ -133,7 +146,7 @@
 
                                                             <a class="btn btn-primary " href="registraradmin.php">Agregar Administrador</a>
 
-                                                            
+                                                         <li>Bienvenido <?php echo $_SESSION['nombre']?></li>   
 
                                                             <form>
                                                                 <div class="form-group" style="margin-top: 15px">
@@ -146,7 +159,7 @@
                                                                 </div>
                                                             </form>
 
-                                                            <a class="btn btn-primary " href="modcontradm.php">Cambiar contraseña</a>
+                                                            <?php  echo "<a class='btn btn-primary' href='modcontradm.php?id=".$idUsuario."'>Cambiar contraseña</a></td>";//<<<<-----se modifico esta parte para mandar el id a modif contrase;a  ?>
 
                                                             <div class="form-group" style="margin-top: 15px">
 

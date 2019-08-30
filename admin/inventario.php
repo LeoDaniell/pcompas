@@ -45,8 +45,9 @@
                                                 <button class="btn btn-primary" type="submit">Gestion Productos</button>
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item" href="modificar.php">Editar Producto</a>
-                                                <a class="dropdown-item" href="agregar.php">Agregar nuevo Producto</a>
+                                            <?php  echo "<a class='nav-link' href='modificar.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?>Editar producto</a>
+                                            <?php  echo "<a class='nav-link' href='agregar.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?>Agregar producto</a>
+                                 
                                             </div>
                                         </li>
                                         <li class="nav-item dropdown">
@@ -66,9 +67,9 @@
 
                                         </li>
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="inventario.php"><button class="btn btn-primary"
+                                        <?php  echo "<a class='nav-link' href='inventario.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?><button class="btn btn-primary"
                                                     type="submit">Inventario</button></a>
-                                        </li>
+                                             </li>
 
 
                                     </ul>
@@ -126,7 +127,7 @@
                                                                 </div>
                                                             </form>
 
-                                                            <a class="btn btn-primary " href="modcontradm.php">Cambiar contraseña</a>
+                                                            <?php  echo "<a class='btn btn-primary' href='modcontradm.php?id=".$_GET['id']."'>Cambiar contraseña</a></td>";//<<<<-----se modifico esta parte para mandar el id a modif contrase;a  ?> 
 
                                                             <div class="form-group" style="margin-top: 15px">
 
@@ -194,8 +195,8 @@
 
       <ul>
         <li class="compl">Existencias Completas</li>
-        <li class="compl1">Pocas Existencias</li>
-        <li class="compl2">Existencias Satisfactorias</li>
+        <li class="compl1">Existencias Satisfactorias</li>
+        <li class="compl2">Pocas Existencias</li>
 
       </ul>
 
@@ -213,105 +214,55 @@
               <tr class="compl3">
                 <th scope="col">Id</th>
                 <th scope="col">Producto</th>
+                <th scope="col">Marca</th>
                 <th scope="col">Numero de cajas</th>
                 <th scope="col">Numero de piezas</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="compl">
-                <th scope="row">01</th>
-                <td>Bicolor Dixon</td>
-                <td>5</td>
-                <td>50</td>
-              </tr>
-              <tr class="compl2">
-                <th scope="row">02</th>
-                <td>Block de taquigrafia espiral</td>
-                <td>3</td>
-                <td>15</td>
-              </tr>
-              <tr class="compl">
-                <th scope="row">03</th>
-                <td>Calculadora basica</td>
-                <td>5</td>
-                <td>50</td>
-              </tr>
-              <tr class="compl1">
-                <th scope="row">04</th>
-                <td>Cartulina bristol blanca</td>
-                <td>1</td>
-                <td>30</td>
-              </tr>
-              <tr class="compl2">
-                <th scope="row">05</th>
-                <td>Cartulina color fluoresente</td>
-                <td>1</td>
-                <td>20</td>
-              </tr>
-
-              <tr class="compl1">
-                <th scope="row">06</th>
-                <td>Clip mariposa</td>
-                <td>2</td>
-                <td>40</td>
-              </tr>
-              <tr class="compl">
-                <th scope="row">07</th>
-                <td>Cartulina Iris</td>
-                <td>1</td>
-                <td>50</td>
-              </tr>
-
-              <tr class="compl1">
-                <th scope="row">08</th>
-                <td>Colores cortos</td>
-                <td>4</td>
-                <td>40</td>
-              </tr>
-
-              <tr class="compl2">
-                <th scope="row">09</th>
-                <td>Corrector liquido Dixon</td>
-                <td>5</td>
-                <td>20</td>
-              </tr>
-              <tr class="compl">
-                <th scope="row">01</th>
-                <td>Bicolor Dixon</td>
-                <td>5</td>
-                <td>50</td>
-              </tr>
-              <tr class="compl2">
-                <th scope="row">02</th>
-                <td>Block de taquigrafia espiral</td>
-                <td>3</td>
-                <td>15</td>
-              </tr>
-              <tr class="compl">
-                <th scope="row">03</th>
-                <td>Calculadora basica</td>
-                <td>5</td>
-                <td>50</td>
-              </tr>
-              <tr class="compl1">
-                <th scope="row">04</th>
-                <td>Cartulina bristol blanca</td>
-                <td>1</td>
-                <td>30</td>
-              </tr>
-              <tr class="compl2">
-                <th scope="row">05</th>
-                <td>Cartulina color fluoresente</td>
-                <td>1</td>
-                <td>20</td>
-              </tr>
-
-              <tr class="compl1">
-                <th scope="row">06</th>
-                <td>Clip mariposa</td>
-                <td>2</td>
-                <td>40</td>
-              </tr>
+               <?php
+       require "conexion.php";
+     
+        $sentecia="SELECT idProducto, nombreProducto, marca, cajas, pzsCajas FROM producto";
+        
+          $resultado= $conectar->query($sentecia) or die (mysqli_error($conectar));
+        $consultapr = mysqli_query($conectar,$sentecia);
+        $array1=mysqli_fetch_array($consultapr);
+        
+        
+        while($fila=$resultado->fetch_assoc())
+        {
+          $comp = (int) $fila['pzsCajas'] * $fila['cajas'];
+       if ($comp <= 15) {
+        echo "<tr bgcolor=#e87878 >";
+             echo "<td>"; echo $fila['idProducto']; echo "</td>";
+            echo "<td>"; echo $fila['nombreProducto']; echo "</td>";
+            echo "<td>"; echo $fila['marca']; echo "</td>";
+            echo "<td>"; echo $fila['cajas']; echo "</td>";
+            echo "<td>"; echo $fila['pzsCajas']; echo "</td>";
+            echo "</tr>";
+       }elseif ($comp <= 30) {
+         echo "<tr bgcolor=#f0b587 >";
+             echo "<td>"; echo $fila['idProducto']; echo "</td>";
+            echo "<td>"; echo $fila['nombreProducto']; echo "</td>";
+            echo "<td>"; echo $fila['marca']; echo "</td>";
+            echo "<td>"; echo $fila['cajas']; echo "</td>";
+            echo "<td>"; echo $fila['pzsCajas']; echo "</td>";
+            echo "</tr>";
+       }elseif ($comp > 30) {
+         echo "<tr bgcolor=#7de878 >";
+             echo "<td>"; echo $fila['idProducto']; echo "</td>";
+            echo "<td>"; echo $fila['nombreProducto']; echo "</td>";
+            echo "<td>"; echo $fila['marca']; echo "</td>";
+            echo "<td>"; echo $fila['cajas']; echo "</td>";
+            echo "<td>"; echo $fila['pzsCajas']; echo "</td>";
+            echo "</tr>";
+       }
+          
+        
+            
+        }
+      ?>
             </tbody>
           </table>
         </div>

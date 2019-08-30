@@ -27,7 +27,7 @@
    if($query) {
 
     echo "<script> alert('Datos insertados correctamente');
-    location.href= 'agregar.php';
+    location.href= 'registrar.php';
     </script>";
     
 
