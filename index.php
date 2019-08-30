@@ -39,22 +39,23 @@
         if($row == true){ //<<<<------SE MODIFICO DESDE AQUI
             $idTipoUsuario = $row[4];
             
-            
+            $_SESSION['idTipoUsuario'] = $idTipoUsuario;
             switch($idTipoUsuario){
                 case 1:
-                $idu=$row[0];
-               $_SESSION['id']=$idu;
-                   header('location: cliente/iniciocli.php');
-                break;
+                header('location: cliente/iniciocli.php');
+                 $idu=$row[0];
+                 $_SESSION['id']=$idu;
+                            
+                 break;
 
                 case 2:
-                $idu=$row[0];
-               $_SESSION['id']=$idu;
-               echo $idu;
-               $nombre=$row[3];
-               $_SESSION['nombre']=$nombre;
-               echo $nombre;
                 header('location: admin/registrar.php');
+                $idu=$row[0];
+                $_SESSION['id']=$idu;
+                $nombre=$row[3];
+                $_SESSION['nombre']=$nombre;
+               
+               
                 break;//<<<<-----HASTA AQUI "no fueron muchos cambios y no afectan el demas funcionamiento"
 
                 default:

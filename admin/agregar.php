@@ -113,7 +113,7 @@
                                                                 </div>
                                                             </form>
 
-                                                            <a class="btn btn-primary " href="registraradmin.php">Agregar Administrador</a>
+                                                            <?php  echo "<a class='btn btn-primary ' href='registraradmin.php?id=".$_GET['id']."'>Agregar administrador</a></td>";//<<<<-----se modifico esta parte para mandar el id a modif contrase;a  ?> 
 
                                                             
 
@@ -137,8 +137,9 @@
 
                                         </form>
 
-                                        <a class="btn btn-primary btnrojo" href="eliminaradm.php">Eliminar Cuenta</a>
+                                        <?php  echo "<a class='btn btn-primary btnrojo' href='eliminaradm.php?id=".$_GET['id']."'>Eliminar cuenta</a></td>";//<<<<-----se modifico esta parte para mandar el id a modif contrase;a  ?> 
 
+                     
                                         <div class="form-group" style="margin-top: 15px">
                                             <h3>Cerrar sesión<br> </h3>
                                         </div>
@@ -291,7 +292,7 @@
                                                 <div class="form-group">
                                                     <label > <b>Selecione la imagen</b>
                                                     </label>
-                                                    <input type="file" name="foto" required>
+                                                    <input type="file" accept="image/*" name="foto" required>
                                                 </div>
                                             
                                         </p>

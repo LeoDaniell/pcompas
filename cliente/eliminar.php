@@ -1,20 +1,3 @@
-<?php
-	require_once "../admin/conexion.php";
-	if(isset($_GET['id'])){
-		$id=$_GET['id'];
-		$query="DELETE FROM usuario WHERE id='$id'";
-		if($mysqli->query($query)){
-			echo "Registro eliminado";
-		}else{
-			echo "Error no se pudo eliminar el registro";
-		}
-	}else{
-		echo "Error no se pudo procesar la peticion";
-	}
-?>
-
-
-
 <!doctype html>
 <html lang="es">
 
@@ -58,9 +41,9 @@
                     </li>
                     
                     <li class="nav-item active">
-                      <a class="nav-link" href="productos.php"><button class="btn btn-primary"
-                          type="submit">Productos</button></a>
-                    </li>
+                    <?php  echo "<a class='nav-link' href='productos.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?><button class="btn btn-primary"
+                                                    type="submit">Productos</button></a>
+                     </li>
                     
                     <li class="nav-item dropdown">
                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -68,14 +51,14 @@
                           <button class="btn btn-primary" type="submit">Servicios Extras</button>
                       </a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="recarga.php">Recargas</a>
-                         <a class="dropdown-item" href="impresiones.php">Impresiones</a>
-                      </div> 
+                      <?php  echo "<a class='dropdown-item' href='recarga.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?> Recargas</a>
+                      <?php  echo "<a class='dropdown-item' href='impresiones.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?> Impresiones</a>
+                       </div> 
                   </li>
                     <li class="nav-item active">
-                      <a class="nav-link" href="contacto.php"><button class="btn btn-primary"
-                          type="submit">Contacto</button></a>
-                    </li>
+                    <?php  echo "<a class='nav-link' href='contacto.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?><button class="btn btn-primary"
+                                                    type="submit">Contacto</button></a>
+                     </li>
   
                   </ul>
                   <!--  Boton de notificaci�n-->
@@ -118,7 +101,7 @@
 
                                                       
 
-                                                          <a class="btn btn-primary " href="modcontra.php">Modificar contraseña</a>
+                                                          <?php  echo "<a class='btn btn-primary' href='modcontra.php?id=".$_GET['id']."'>Cambiar contraseña</a></td>";//<<<<-----se modifico esta parte para mandar el id a modif contrase;a  ?>
                                                       
                                                       
                                                       
@@ -134,7 +117,7 @@
 
 
                                                       
-                                                      <a class="btn btn-primary btnrojo" href="eliminar.php">Eliminar cuenta</a>
+                                                      <?php  echo "<a class='btn btn-primary btnrojo' href='eliminar.php?id=".$_GET['id']."'>Eliminar cuenta</a></td>";//<<<<-----se modifico esta parte para mandar el id a modif contrase;a  ?>
                                                       
 
 
@@ -191,27 +174,22 @@
             <div class="card-header">
               Eliminar Cuenta
             </div>
-            <div class="card-body">
+            <div class="card-body" style="text-aling:center">
     
     
                 <div class="col-md-12" style="margin-top: 15px"></div>
-                <label>Para eliminar este cliente es necesario confirmar su contraseña &nbsp; </label>
+                <label>Para eliminar esta cuenta es necesario confirmar su usuario &nbsp; </label>
                 <div class="col-md-12" style="margin-top: 7px"></div>
                 <label>Usted eliminará de la base de datos el cliente con el usuario: &nbsp; </label>
                 <div class="row tit" style="margin-top: 15px;"></div>
                 <br>
-                <form class="form-inline" method="GET" >
-                <div class="form-group mb-2"    >
-                  <label for="staticEmail2" class="sr-only" >Usuario cliente</label>
-                  <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="cuentacliente@example.com">
-                </div>
-                <div class="form-group mx-sm-3 mb-2">
-                  <label for="inputPassword2" class="sr-only">Contraseña</label>
-                  <input type="password" class="form-control" id="inputPassword2" placeholder="Contraseña">
-                </div>
-                <div class="col-md-12 " style="margin-top: 15px"></div>
-                <input type="submit" class="btn btn-primary mb-2 btnrojo" style="margin: auto" value="Eliminar cuenta" name="id">
-              </form>
+                <form action="../admin/m_eliminar.php" method="POST" name="from">
+                 <p>Insertar el nombre de usuario: </p>
+                  <input type="text" name="username"/>
+                  <br>
+                  <br>
+                  <input type="submit" class="btn btn-primary btnrojo" value="Borrar"/>
+                </form>
           </div>
         </div>
       </div>

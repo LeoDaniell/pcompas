@@ -115,9 +115,8 @@
 
 
                                                       
-                                                      <a class="btn btn-primary btnrojo" href="eliminar.php">Eliminar cuenta</a>
+                                                      <?php  echo "<a class='btn btn-primary btnrojo' href='eliminar.php?id=".$_GET['id']."'>Eliminar cuenta</a></td>";//<<<<-----se modifico esta parte para mandar el id a modif contrase;a  ?>
                                                       
-
 
 
 

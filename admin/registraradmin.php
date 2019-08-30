@@ -99,9 +99,9 @@ $conexion->close();
                                             <button class="btn btn-primary" type="submit">Gestion Productos</button>
                                         </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="modificar.php">Editar Producto</a>
-                                            <a class="dropdown-item" href="agregar.php">Agregar nuevo Producto</a>
-                                        </div>
+                                        <?php  echo "<a class='nav-link' href='modificar.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?>Editar producto</a>
+                                            <?php  echo "<a class='nav-link' href='agregar.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?>Agregar producto</a>
+                                 </div>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
@@ -120,9 +120,9 @@ $conexion->close();
 
                                     </li>
                                     <li class="nav-item active">
-                                        <a class="nav-link" href="inventario.php"><button class="btn btn-primary"
-                                                type="submit">Inventario</button></a>
-                                    </li>
+                                    <?php  echo "<a class='nav-link' href='inventario.php?id=".$_GET['id']."'>";//<<<<-----se modifico esta parte para mandar el id a inventario  ?><button class="btn btn-primary"
+                                                    type="submit">Inventario</button></a>
+                                            </li>
 
 
                                 </ul>
@@ -166,8 +166,10 @@ $conexion->close();
                                                                 </div>
                                                             </form>
 
-                                                            <a class="btn btn-primary " href="registraradmin.php">Agregar Administrador</a>
+                                                            
+                                                            <?php  echo "<a class='btn btn-primary ' href='registraradm.php?id=".$_GET['id']."'>Agregar administrador</a></td>";//<<<<-----se modifico esta parte para mandar el id a modif contrase;a  ?> 
 
+                     
                                                             
 
                                                             <form>
@@ -181,7 +183,7 @@ $conexion->close();
                                                                 </div>
                                                             </form>
 
-                                                            <a class="btn btn-primary " href="modcontradm.php">Cambiar contraseña</a>
+                                                            <?php  echo "<a class='btn btn-primary' href='modcontradm.php?id=".$_GET['id']."'>Cambiar contraseña</a></td>";//<<<<-----se modifico esta parte para mandar el id a modif contrase;a  ?> 
 
                                                             <div class="form-group" style="margin-top: 15px">
 
@@ -189,8 +191,10 @@ $conexion->close();
                                                             </div>
 
                                         </form>
+                                        <?php  echo "<a class='btn btn-primary btnrojo' href='eliminaradm.php?id=".$_GET['id']."'>Eliminar cuenta</a></td>";//<<<<-----se modifico esta parte para mandar el id a modif contrase;a  ?> 
 
-                                        <a class="btn btn-primary btnrojo" href="eliminaradm.php">Eliminar Cuenta</a>
+                                                           
+                                       
 
                                         <div class="form-group" style="margin-top: 15px">
                                             <h3>Cerrar sesión<br> </h3>

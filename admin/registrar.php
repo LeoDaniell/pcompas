@@ -132,7 +132,7 @@
                                                         </div>
                                                         <div class="modal-body">
 
-
+                                                        <h3 class="bien"><div>Bienvenido <?php echo $_SESSION['nombre']?> </div></h3>   
                                                         <form>
                                                                 <div class="form-group" style="margin-top: 15px">
                                                                     <h3>Agregar administrador<br> </h3>
@@ -144,9 +144,9 @@
                                                                 </div>
                                                             </form>
 
-                                                            <a class="btn btn-primary " href="registraradmin.php">Agregar Administrador</a>
+                                                            <?php  echo "<a class='btn btn-primary ' href='registraradmin.php?id=".$idUsuario."'>Agregar administrador</a></td>";//<<<<-----se modifico esta parte para mandar el id a modif contrase;a  ?> 
 
-                                                         <li>Bienvenido <?php echo $_SESSION['nombre']?></li>   
+                                                         
 
                                                             <form>
                                                                 <div class="form-group" style="margin-top: 15px">
@@ -168,7 +168,7 @@
 
                                         </form>
 
-                                        <a class="btn btn-primary btnrojo" href="eliminaradm.php">Eliminar Cuenta</a>
+                                        <?php  echo "<a class='btn btn-primary btnrojo' href='eliminaradm.php?id=".$idUsuario."'>Eliminar cuenta</a></td>";//<<<<-----se modifico esta parte para mandar el id a modif contrase;a  ?> 
 
                                         <div class="form-group" style="margin-top: 15px">
                                             <h3>Cerrar sesión<br> </h3>
