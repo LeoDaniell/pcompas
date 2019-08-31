@@ -1,3 +1,6 @@
+<?php
+session_start();
+?> 
 <!doctype html>
 <html lang="es">
 
@@ -185,70 +188,70 @@
                     <div class="card-body">
                         <div class="container">
                             <!--seccion Contenido-->
+
+
                             
+                            <form method="POST" name="formulariorecargas"  action=<?php echo"guardarRecarga.php?id=".$_GET['id']."";?> >
+                                
                             <h3>Datos para el servicio</h3>
                                         <br>
-
+                                       
                             <div class="row ">
 
                                 <!-- Columna 1-->
-                                
+                               
                                 <div class="col-md-6" style="margin-top: 15px">
                                         
-                                        <div class="row" style="margin-right: 25px">
+                                <div class="row" >
+                                
+                                
+                                <label class="my-1 mr-2" >Compañia </label>
+                                <select class="custom-select my-1 mr-sm-2" name="compania" onchange="cambiar()">
+                                <option value="0">Seleccionar...</option>
+                                <option value="1">Telcel</option>
+                                <option value="2">Movistar</option>
+                                <option value="3">Unefon</option>
+                                <option value="4">At&t</option>
+                                <option value="5">Iusacell</option>
+                                </select>
+
+                            </div>   
+
+                            <br>
+                            <div class="row">
+                            <br>    
+
+                                <label class="my-1 mr-2">Tipo</label>
+                                <select class="custom-select my-1 mr-sm-2" name="tipo">
+                                
+                                <option value="-">
+                                
+                                </select>
+                              
 
 
-                                            <p>
+                            </div>
+                            <br>
 
 
-                                                <br>
-                                                <form class="form-inline">
-                                                    <label class="my-1 mr-2" for="idcompañia">Compañia </label>
-                                                    <select class="custom-select my-1 mr-sm-2" id="idcompañia">
-                                                      <option selected>Seleccionar...</option>
-                                                      <option value="1">Telcel</option>
-                                                      <option value="2">Movistar</option>
-                                                      <option value="3">Unefon</option>
-                                                      <option value="4">At&t</option>
-                                                      <option value="5">Iusacell</option>
-                                                    </select>
-                                            </p>
-
-
-                                        </div>
-                                        <br>
-                                        
-                                        <div class="row">
-                                            <p>
-                                                <br>
-                                                <form class="form-inline">
-                                                    <label class="my-1 mr-2" for="idtipo">Tipo</label>
-                                                    <select class="custom-select my-1 mr-sm-2" id="idtipo">
-                                                      <option selected>Seleccionar...</option>
-                                                      <option value="1">Plan</option>
-                                                      <option value="2">Normal</option>
-                                                    </select>
-                                                    
-                                            </p>
-
-                                        </div>
-                                        <br>
-                                        
                                         <div class="row">
                                             <p>
                                                 <br>
                                                 <form class="form-inline">
                                                     <label class="my-1 mr-2" for="idmonto">Monto</label>
-                                                    <select class="custom-select my-1 mr-sm-2" id="idmonto">
+                                                    <select class="custom-select my-1 mr-sm-2" id="idmonto" name="monto" >
                                                       <option selected>Seleccionar...</option>
-                                                      <option value="1">10</option>
-                                                      <option value="2">20</option>
-                                                      <option value="3">30</option>
-                                                      <option value="4">40</option>
-                                                      <option value="5">50</option>
-                                                      <option value="6">80</option>
-                                                      <option value="7">100</option>
+                                                      <option value="10">$10</option>
+                                                      <option value="20">$20</option>
+                                                      <option value="30">$30</option>
+                                                      <option value="50">$50</option>
+                                                      <option value="100">$100</option>
+                                                      <option value="150">$150</option>
+                                                      <option value="200">$200</option>
+                                                      <option value="300">$300</option>
+                                                      <option value="500">$500</option>
                                                     </select>
+</form>
                                             </p>
 
                                         </div>
@@ -264,7 +267,7 @@
                                             <p>
                                                 Numero telefónico: &nbsp;
                                                 <br>
-                                                <input type="text" maxlength="10" name="cajas">
+                                                <input type="text" maxlength="10" name="num1">
                                                 
                                             </p>
                                         </div>
@@ -273,29 +276,44 @@
                                             <p>
                                                 Ingresar nuevamente: &nbsp;
                                                 <br>
-                                                <input type="text" maxlength="10" name="cajas">
+                                                <input type="text" maxlength="10" name="num2">
                                             </p>
                                         </div>
 
 
 
                                     </div>
-                                    <div class="container">
+                                          <div class="container">
 
-                                            <div>
+                                                <div class="row">
                                                     <img class="dos" src="../imagen/signo-ad.jpg" />
                                                 </div>
         
                                                 <div class="row">
                                                     <p class="txt" style="margin: auto"> <b class="bb">Al pulsar el botón los datos se guardarán, por favor verifique que los datos sean correctos</b>
                                                     </p>
-                                                </div>
+                                                
+                                                    </div>
+                                                    
 
                                                 <br>
 
-                                        <div class="row">
-                                            <a href="#" class="btn btn-primary" style="margin: auto">Realizar recarga</a>
-                                        </div>
+                                                <select  class="form-control" name="idUsuario" hidden >
+                                    
+                                    <option value="<?php echo $_SESSION['id']?>"><?php echo $_SESSION['id']?></option>
+                      
+                      
+                                    </select>
+
+                                                <div class="row" >
+                                        
+                                        <ul style="margin: auto">
+                                            <input type="submit" value="Solicitar recarga" class="btn btn-Danger ">
+                                        </ul>
+                                    </div>
+
+                                    </form>
+                                    
                                         <br>
                                         
                                     </div>
@@ -343,6 +361,8 @@
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="../js/jquery-3.4.1.min.js"></script>
   <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/recargas.js"></script>
+  
 </body>
 
 </html>
