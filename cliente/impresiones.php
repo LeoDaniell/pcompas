@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="es">
 
@@ -178,9 +181,19 @@
 
                         </ul>
                     </div>
+
+
                     <div class="card-body">
                         <div class="container">
+
+
                             <!--seccion Contenido-->
+
+
+                           
+                                                      
+
+                            <form method="POST" name="form-work"  action=<?php echo"guardarImpresion.php?id=".$_GET['id']."";?> enctype="multipart/form-data">
                             <div class="row ">
 
                                 <!-- Columna 1-->
@@ -192,7 +205,7 @@
                                         <p>
                                             Numero de Copias: &nbsp;
                                             <br>
-                                            <input type="text" name="cajas">
+                                            <input type="text" name="numCopias" required>
                                         </p>
                                     </div>
 
@@ -202,15 +215,15 @@
                                     <div class="row" style="margin-right: 25px">
 
                                         <br>
-                                        <form class="form-inline">
-                                            <label class="my-1 mr-2" for="idcompañia">Tipo de impresión:</label>
-                                            <select class="custom-select my-1 mr-sm-2" id="idcompañia">
+                                        
+                                            <label >Tipo de impresión:</label>
+                                            &nbsp;
+                                            <select class="custom-select my-1 mr-sm-2" name = "tipImpresion" required>
                                                 <option selected>Seleccionar...</option>
-                                                <option value="1">Blanco/Negro</option>
-                                                <option value="2">Color</option>
+                                                <option value="Blanco/Negro">Blanco/Negro</option>
+                                                <option value="Color">Color</option>
                                             </select>
-                                        </form>
-
+                                        
 
 
                                     </div>
@@ -219,14 +232,16 @@
                                     <div class="row">
 
                                         <br>
-                                        <form class="form-inline">
-                                            <label class="my-1 mr-2" for="idtipo">Tamaño de hoja:</label>
-                                            <select class="custom-select my-1 mr-sm-2 " id="idtipo">
+                                       
+                                            <label >Tamaño de hoja:</label>
+                                            &nbsp;
+                                            <select name = "tamHoja" class="custom-select my-1 mr-sm-2" required>
                                                 <option selected>Seleccionar...</option>
-                                                <option value="5">Oficio</option>
-                                                <option value="6">Carta</option>
+                                                <option value="Carta">Carta</option>
+                                                <option value="Oficio">Oficio</option>
+                                                
                                             </select>
-                                        </form>
+                                        
 
 
                                     </div>
@@ -249,14 +264,15 @@
                                     <div class="row">
 
                                         <br>
-                                        <form class="form-inline">
-                                            <label class="my-1 mr-2" for="idtipo">Otro tipo de hoja:</label>
-                                            <select class="custom-select my-1 mr-sm-2 " id="idtipo">
+                                        
+                                            <label >Tipo de papel:</label>
+                                            &nbsp;
+                                            <select name="tipPapel" class="custom-select my-1 mr-sm-2" required>
                                                 <option selected>Seleccionar...</option>
-                                                <option value="5">Bond</option>
-                                                <option value="6">Opalina</option>
+                                                <option value="Bond">Bond</option>
+                                                <option value="Opalina">Opalina</option>
                                             </select>
-                                        </form>
+                                      
 
 
                                     </div>
@@ -265,14 +281,15 @@
                                     <div class="row">
 
                                         <br>
-                                        <form class="form-inline">
-                                            <label class="my-1 mr-2" for="idtipo">Modo de impresión:</label>
-                                            <select class="custom-select my-1 mr-sm-2 " id="idtipo">
+                                       
+                                            <label>Modo de impresión:</label>
+                                            &nbsp;
+                                             <select name="modImpresion"  class="custom-select my-1 mr-sm-2" required>
                                                 <option selected>Seleccionar...</option>
-                                                <option value="5">Doble Cara</option>
-                                                <option value="6">Una Cara</option>
+                                                <option value="Una cara">Una Cara</option>
+                                                <option value="Doble Cara">Doble Cara</option>
                                             </select>
-                                        </form>
+                                       
 
 
                                     </div>
@@ -280,15 +297,15 @@
 
                                     <div class="row">
 
-                                        <form>
+                                        
                                             <div class="form-group">
-                                                <label for="exampleFormControlFile2">Adjuntar Archivo: <br> <b
-                                                        class="bb"> NOTA: Solo se
-                                                        pueden adjuntar archivos .pdf </b></label>
-                                                <input type="file" class="form-control-file"
-                                                    id="exampleFormControlFile2" accept=".pdf">
+                                                <label>Adjuntar Archivo: <br> <b> NOTA: Solo se
+                                                        pueden adjuntar archivos .pdf </b>
+                                                </label>
+                                                
+                                                <input type="file" name="pdfImpresion" required>
                                             </div>
-                                        </form>
+                                        
                                     </div>
 
                                     <br>
@@ -299,8 +316,8 @@
                                     <div class="row">
                                         <br>
                                         <p>
-                                            Adjunta Tu Comentario: &nbsp;
-                                            <input type="text" name="cajas">
+                                            Fecha de entrega: &nbsp;
+                                            <input type="text" name="fechaEntrega" required placeholder="  dia/mes/año hora">
                                         </p>
                                     </div>
                                     <br>
@@ -318,17 +335,27 @@
                                         </p>
                                     </div>
                                     <br>
-                                    <div class="row">
-                                        <a href="#" class="btn btn-primary" style="margin: auto">Realizar
-                                            impresión</a>
+                                     
+                                    <select  class="form-control" name="idUsuario" hidden >
+                                    
+                                    <option value="<?php echo $_SESSION['id']?>"><?php echo $_SESSION['id']?></option>
+                      
+                      
+                                    </select>
+                     
+                                    <br>
+                                    <div class="row" >
+                                        
+                                        <ul style="margin: auto">
+                                            <input type="submit" value="Solicitar impresión" class="btn btn-Danger ">
+                                        </ul>
                                     </div>
+                                    
                                 </div>
 
 
-
-
+                                </form>
                             </div>
-
                         </div>
                     </div>
                 </div>
