@@ -20,6 +20,10 @@ class Producto extends Database{
         $this->calcularPaginas();
     }
 
+    
+
+
+    
 
     function mostrarProducto(){
         $query = $this->connect()->prepare('SELECT * FROM producto LIMIT :pos, :n');    

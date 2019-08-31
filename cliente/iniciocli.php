@@ -215,18 +215,23 @@
                                     <div id="carouselExampleFade" class="carousel slide carousel-fade"
                                         data-ride="carousel">
                                         <div class="carousel-inner">
-                                            <div class="carousel-item active">
-                                                <img src="../imagen/carrucel img1.jpg" class="d-block w-100" alt=""
-                                                    height="300">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="../imagen/Jardín_San_Felipe.jpg" class="d-block w-100"
-                                                    alt="" height="300">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="../imagen/mostrario.jpg"  class="d-block w-100" alt=""
-                                                    height="300">
-                                            </div>
+                                        <div class="carousel-item active">
+                                            <img src="../imagen/imagen1.png"  class="d-block w-100" alt=""
+                                            width="300" height="300">
+                                        </div>
+                                       <!-- <div class="carousel-item">
+                                            <img src="../imagen/imagen2.png" class="d-block w-100"
+                                                alt=""    width="300" height="300px">
+                                        </div>
+                                        -->
+                                        <div class="carousel-item">
+                                            <img src="../imagen/imagen3.png"  class="d-block w-100" alt=""
+                                            width="300" height="300">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="../imagen/imagen4.png"  class="d-block w-100" alt=""
+                                            width="300" height="300">
+                                        </div>
                                         </div>
                                         <a class="carousel-control-prev" href="#carouselExampleFade" role="button"
                                             data-slide="prev">
@@ -266,8 +271,8 @@
                                         <p>
 
                                             <div class="dropdown">
-                                                    <a class="nav-link" href="productos">
-                                                <img src="../imagen/nuevos_productos.jpg" class="d-block w-100"
+                                                    <a class="nav-link" href="#">
+                                                <img src="../imagen/productos.png" class="d-block w-100"
                                                     alt="" height="300">
                                                     </a>
                                             </div>
@@ -285,7 +290,7 @@
 
                                             <div class="dropdown">
                                                     <a class="nav-link" href="recargas">
-                                                <img src="../imagen/cell_recargas.png" class="d-block w-100"
+                                                <img src="../imagen/recargas.png" class="d-block w-100"
                                                     height="300" high="100"> 
                                                 </a>
                                             </div>
@@ -302,7 +307,7 @@
 
                                             <div class="dropdown">
                                                     <a class="nav-link" href="impresion">
-                                                <img src="../imagen/imprime-aqui-banner.png" 
+                                                <img src="../imagen/imprimir.png" 
                                                     class="d-block w-100" alt="" height="300">
                                                     </a> 
                                             </div>

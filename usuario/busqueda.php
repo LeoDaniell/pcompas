@@ -234,12 +234,6 @@
                             <input class="form-control mr-sm-2" type="text" id="buscar" name="palabra"placeholder="Articulos">
                             <input class="btn btn-outline-success my-2 my-sm-0" value="Buscar" type="submit">
                         </form>
-                        <?php
-                           if (isset($_POST['Buscar'])){
-
-                            require_once "../paginacion.php";
-                           }
-                        ?>
                     </p>
                    
                 
@@ -273,7 +267,7 @@
                
                <div class="row">
                     <?php
-                       $producto->mostrarProducto();
+                       $producto->mostrarBusqueda();
                     ?>
                </div>
                 

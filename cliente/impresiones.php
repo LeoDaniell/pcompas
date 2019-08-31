@@ -324,7 +324,7 @@ session_start();
 
                                 </div>
                                 <div class="container">
-                                    <div>
+                                    <div class="row">
                                         <img class="dos" src= "../imagen/signo-ad.jpg">
                                     </div>
 
